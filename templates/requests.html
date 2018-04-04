@@ -1,0 +1,16 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/static/request.js"></script>
+</head>
+
+<div>
+    <input id="new-request-email" type="text" class="login-field" value="" placeholder="email" name="req_email">
+    <input id="new-request-name" type="text" class="login-field" value="" placeholder="name" name="req_name">
+    <input id="new-request-description" type="text" class="login-field" value="" placeholder="description" name="req_desc">
+    <button id="add-request-btn" class="btn btn-primary btn-large btn-block" onclick="addRequest()">Submit Request</button>
+</div>
+
+<p>click the button to return to index page</p>
+<form action="/Index" method="POST">
+<input type="submit" value="Index" class="btn btn-primary btn-large btn-block" >
+</form>
