@@ -1,15 +1,6 @@
 import time, socket, MySQLdb, json
 from requests import *
 
-
-########
-# Defs #
-########
-TABLE_NAME = 'results'
-FIELD_ID = "result_id"
-FIELD_PARAMS = "params"
-FIELD_RESULT = "result"
-
 class Analyze:
     def __init__(self, result_id, params, result):
         self.result_id = result_id
@@ -41,8 +32,16 @@ while True:
             cursor.execute(del_row, [info.request_id])
             db.commit()
     else:
+        str = "SELECT NOW()"
+        print(cursor.execute(str))
         print('no requests')
-    time.sleep(30)
+    time.sleep(3)
 
-
+########
+# Defs #
+########
+TABLE_NAME = 'results'
+FIELD_ID = "result_id"
+FIELD_PARAMS = "params"
+FIELD_RESULT = "result"
 #take all requests, store id into id of results table, requests info as json (json.stringify) into paramams, "Done" into result
