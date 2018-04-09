@@ -44,7 +44,7 @@ while True:
             postmark.emails.send(
             From='dng4@wisc.edu',
             To='dng4@wisc.edu',
-            Subject='Message',
+            Subject='Morgridge Insitute',
             HtmlBody='<b>your request has been processed</b>')
     else:
         print('no requests')
