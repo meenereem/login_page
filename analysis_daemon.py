@@ -1,5 +1,14 @@
-import time, socket, MySQLdb
+import time, socket, MySQLdb, json
 from requests import *
+
+
+########
+# Defs #
+########
+TABLE_NAME = 'results'
+FIELD_ID = "result_id"
+FIELD_PARAMS = "params"
+FIELD_RESULT = "result"
 
 class Analyze:
     def __init__(self, result_id, params, result):
@@ -24,26 +33,16 @@ while True:
     all_reqs = select_all_requests(db)
     if all_reqs != None:
         for info in all_reqs:
-            mylist = [info.email, info.name, info.description]
+            mylist = {"email": info.email, "name": info.name, "description": info.description}
             done = "Done"
             q_str = "INSERT INTO results ({0}, {1}, {2}) values (%s, %s, %s)".format(FIELD_ID, FIELD_PARAMS, FIELD_RESULT)
-            cursor.execute(q_str, [info.request_id, mylist, done])
-            del_row = "delete from results where id = %s"
+            cursor.execute(q_str, [info.request_id, json.dumps(mylist), done])
+            del_row = "delete from requests where id = %s"
             cursor.execute(del_row, [info.request_id])
-            cursor.commit()
-            # print(info.request_id)
-            # print(info.email)
-            # print(info.name)
-            # print(info.description)
+            db.commit()
     else:
         print('no requests')
     time.sleep(30)
 
-########
-# Defs #
-########
-TABLE_NAME = 'results'
-FIELD_ID = "result_id"
-FIELD_PARAMS = "params"
-FIELD_RESULT = "result"
+
 #take all requests, store id into id of results table, requests info as json (json.stringify) into paramams, "Done" into result
