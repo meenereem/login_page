@@ -46,6 +46,7 @@
 #     email VARCHAR(200) NOT NULL,
 #     name VARCHAR(200) NOT NULL,
 #     description VARCHAR(200) NOT NULL,
+#     time VARCHAR(200) NOT NULL,
 #     PRIMARY KEY (id)   
 # );
 

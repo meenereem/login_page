@@ -1,6 +1,7 @@
 import time, socket, MySQLdb, json
 from time import gmtime, strftime
 from requests import *
+from postmarker.core import PostmarkClient
 
 ########
 # Defs #
@@ -39,6 +40,12 @@ while True:
             del_row = "delete from requests where id = %s"
             cursor.execute(del_row, [info.request_id])
             db.commit()
+            postmark = PostmarkClient(server_token='a27b1880-5284-4389-b274-b74d22b2b22c')
+            postmark.emails.send(
+            From='dng4@wisc.edu',
+            To='dng4@wisc.edu',
+            Subject='Message',
+            HtmlBody='<b>your request has been processed</b>')
     else:
         print('no requests')
     time.sleep(3)

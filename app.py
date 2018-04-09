@@ -109,12 +109,6 @@ def add_request():
     if request.form['email'] != None and request.form['name'] != None and request.form['description'] != None:
         print(request)
         submit_request(g.db, request.form['email'], request.form['name'], request.form['description'])
-    postmark = PostmarkClient(server_token='a27b1880-5284-4389-b274-b74d22b2b22c')
-    postmark.emails.send(
-    From='dng4@wisc.edu',
-    To='dng4@wisc.edu',
-    Subject='Message',
-    HtmlBody='<b>your request has been processed</b>')
     return jsonify({"success": True})
 
 @app.route('/Index', methods=['POST', 'GET'])
