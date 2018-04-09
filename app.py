@@ -68,13 +68,6 @@ def corr_user():
         return True
     return False
 
-@app.route('/secondpage', methods=['POST', 'GET'])
-def route():
-    if corr_user() == False:
-        return redirect('/login')
-    else:
-        return render_template('secondpage.html')
-
 @app.route('/todopage', methods=['POST', 'GET'])
 def todo():
     if corr_user() == False:

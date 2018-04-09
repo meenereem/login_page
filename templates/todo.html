@@ -1,3 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href="Index">Home</a>
+        <a class="active" href="todopage">Todo-list</a>
+        <a href="requestpage">Request</a>
+        <a href="Results">Results</a>
+    </div>
+
+</body>
+
+</html>
+
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/static/todo.js"></script>
@@ -5,11 +55,12 @@
 <div>
     <h1>Task List</h1>
     <ul>
-            {% for thing in tasks %}
-            <li id={{thing.task_id~"_item"}}><h>{{thing.task}}</h>
+        {% for thing in tasks %}
+        <li id={{thing.task_id~ "_item"}}>
+            <h>{{thing.task}}</h>
             <a href="#" class="delete_button" id={{thing.task_id}} onclick="deleteTask(this)"> Delete Task</a>
-            </li>
-            {% endfor %}
+        </li>
+        {% endfor %}
     </ul>
 </div>
 
@@ -19,5 +70,5 @@
 </div>
 
 <form action="/Index" method="POST">
-<input type="submit" value="Index" class="btn btn-primary btn-large btn-block" >
+    <input type="submit" value="Index" class="btn btn-primary btn-large btn-block">
 </form>
