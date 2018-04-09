@@ -31,7 +31,7 @@ cursor = db.cursor()
 
 while True:
     all_reqs = select_all_requests(db)
-    if all_reqs != None:
+    if all_reqs:
         for info in all_reqs:
             mylist = {"email": info.email, "name": info.name, "description": info.description}
             done = "Done"
@@ -41,8 +41,9 @@ while True:
             cursor.execute(del_row, [info.request_id])
             db.commit()
     else:
+        print("hello")
         print('no requests')
-    time.sleep(30)
+    time.sleep(3)
 
 
 #take all requests, store id into id of results table, requests info as json (json.stringify) into paramams, "Done" into result
