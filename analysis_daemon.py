@@ -41,9 +41,8 @@ while True:
             cursor.execute(del_row, [info.request_id])
             db.commit()
     else:
-        print("hello")
         print('no requests')
-    time.sleep(3)
+    time.sleep(30)
 
 
 #take all requests, store id into id of results table, requests info as json (json.stringify) into paramams, "Done" into result
