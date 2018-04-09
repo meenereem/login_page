@@ -1,6 +1,6 @@
 import time, socket, MySQLdb, json
 from time import gmtime, strftime
-from requests import *
+from myrequests import *
 from postmarker.core import PostmarkClient
 
 ########

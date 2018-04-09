@@ -4,7 +4,8 @@ from flaskext.mysql import MySQL
 from users import *
 from sessions import *
 from todo_list import *
-from requests import *
+from myrequests import *
+from results import *
 from postmarker.core import PostmarkClient
 import os, json, bcrypt, sqlite3
 
@@ -110,6 +111,15 @@ def add_request():
         print(request)
         submit_request(g.db, request.form['email'], request.form['name'], request.form['description'])
     return jsonify({"success": True})
+
+@app.route('/Results', methods=['POST', 'GET'])
+def get_results():
+    if corr_user() == False:
+        return redirect('/login')
+    else:
+        result_information = select_all_results(g.db)
+        request_information = select_all_requests(g.db)
+        return render_template('results.html', request_information=request_information, result_information=result_information)
 
 @app.route('/Index', methods=['POST', 'GET'])
 def ret():

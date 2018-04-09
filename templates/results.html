@@ -1,0 +1,28 @@
+<div>
+    <h1>Pending Requests</h1>
+    <ul>
+            {% for thing in request_information %}
+            <li>
+                <h><b>email:</b> {{thing.email}}&nbsp;</h>
+                <h><b>name:</b> {{thing.name}}&nbsp;</h>
+                <h><b>description:</b> {{thing.description}}&nbsp;</h>
+                <h><b>time:</b> {{thing.time}}</h>
+            </li>
+            {% endfor %}
+    </ul>
+</div>
+
+<div>
+    <h1>Results</h1>
+    <ul>
+            {% for thing in result_information %}
+            <li>
+                <h><b>params:</b> {{thing.params}}</h>
+            </li>
+            {% endfor %}
+    </ul>
+</div>
+
+<form action="/requestpage" method="POST">
+<input type="submit" value="Request" class="btn btn-primary btn-large btn-block" >
+</form>
