@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, render_template, request, session, abort, jsonify, url_for, g
+from flask import Flask, flash, redirect, render_template, request, session, abort, jsonify, url_for, g, send_from_directory
 # from flask_mysqldb import MySQL
 from flaskext.mysql import MySQL
 from users import *
@@ -28,6 +28,10 @@ def before_request():
 def teardown_request(exception):
     if g.db is not None:
         g.db.close()
+
+@app.route('/static/<filename>')
+def server_static(filename):
+    return send_from_directory('static', filename)
 
 @app.route('/')
 def home():
@@ -159,7 +163,7 @@ def do_admin_login():
             create_session_token(g.db, request.form['username'])
             return render_template('index.html', email = obj.email)
     return home()
- 
+
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
     app.run(debug=True,host='0.0.0.0', port=4000)
