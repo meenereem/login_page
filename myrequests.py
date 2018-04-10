@@ -1,3 +1,4 @@
+from time import gmtime, strftime
 class Request:
     def __init__(self, request_id, email, name, description, time):
         self.request_id = request_id
