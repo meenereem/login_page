@@ -24,8 +24,9 @@ function addRequest() {
 }
 
 function fillTargetTermsWithStatic(filename) {
+    console.log("fillTargetTermsWithStatic")
     $.get(
-        "/static/" + filename,
+        "/../static/" + filename,
         function(data) {
             $("#targetterms").val(data);
         }
