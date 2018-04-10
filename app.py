@@ -6,14 +6,15 @@ from sessions import *
 from todo_list import *
 from myrequests import *
 from results import *
+from Secret import *
 from postmarker.core import PostmarkClient
 import os, json, bcrypt, sqlite3
 
 
 mysql = MySQL()
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'pass'
+app.config['MYSQL_DATABASE_USER'] = Secret_DB_user
+app.config['MYSQL_DATABASE_PASSWORD'] = Secret_DB_pass 
 app.config['MYSQL_DATABASE_DB'] = 'morgdb'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
@@ -50,7 +51,7 @@ def do_admin_signup():
 
 @app.route('/email', methods=['POST'])
 def send_result_email():
-        postmark = PostmarkClient(server_token='a27b1880-5284-4389-b274-b74d22b2b22c')
+        postmark = PostmarkClient(server_token = Secret_Token)
         postmark.emails.send(
         From='dng4@wisc.edu',
         To=request.form['email'],
