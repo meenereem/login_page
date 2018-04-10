@@ -1,4 +1,4 @@
-#Sqlite connections
+#Sqlite Database Setup
 # cursor = db.cursor()
 # cursor.execute('''
 #     CREATE TABLE user_sessions(id INTEGER PRIMARY KEY, email TEXT unique, token TEXT unique)
@@ -15,7 +15,7 @@
 # db.commit()
 # db.close()
 
-#Mysql connections
+#Mysql Database Setup
 # CREATE TABLE user_sessions
 # (
 #     id INT unsigned NOT NULL AUTO_INCREMENT,
@@ -56,3 +56,6 @@
 #     params VARCHAR(200) NOT NULL,
 #     result VARCHAR(200) NOT NULL
 # );
+
+#remove all elements from a table
+#truncate table table_name
