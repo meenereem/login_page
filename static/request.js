@@ -5,7 +5,6 @@ function addRequest() {
     // var newsepKP = $("#new-request-sepKP").val();
     newsepKP = "False"
     if ($("#new-request-sepKP").is(':checked')) {
-        console.log("wat")
         newsepKP = "True";
     }
     $.post(
