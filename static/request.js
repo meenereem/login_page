@@ -1,7 +1,10 @@
 function addRequest() {
     var newKeyPhrase = $("#new-request-KeyPhrase").val();
     var newTargetTerms = $("#new-request-TargetTerms").val();
-    var newsepKP = $("#new-request-sepKP").val();
+    var newsepKP = "False";
+    if ($('#"new-request-sepKP"').is(':checked')) {
+        newsepKP = "True";
+    }
     $.post(
         "/request_add",
         {
@@ -17,3 +20,35 @@ function addRequest() {
         }
     )
 }
+
+function fillTargetTermsWithStatic(filename) {
+    $.get(
+        "/static/" + filename,
+        function(data) {
+            $("#targetterms").val(data);
+        }
+    );
+}
+
+$(document).ready(function() {
+    $("#fillgenes").click(function() {
+        fillTargetTermsWithStatic("all_genes.txt");
+    });
+
+    $("#filltfs").click(function() {
+        fillTargetTermsWithStatic("all_tfs.txt");
+    });
+
+    $("#fillligands").click(function() {
+        fillTargetTermsWithStatic("all_ligands.txt");
+    });
+
+    $("#fillmirnas").click(function() {
+        fillTargetTermsWithStatic("all_mirnas.txt");
+    });
+
+    $("#filldrugs").click(function() {
+        fillTargetTermsWithStatic("all_charlesdrugs.txt");
+    });
+
+});

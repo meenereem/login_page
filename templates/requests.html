@@ -1,58 +1,221 @@
 <!DOCTYPE html>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous">
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
 
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
 
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-</style>
+    .topnav a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="topnav">
-  <a href="Index">Home</a>
-  <a href="todopage">Todo-list</a>
-  <a class="active" href="requestpage">Request</a>
-  <a href="Results">Results</a>
-</div>
+  <div class="topnav">
+    <a href="Index">Home</a>
+    <a href="todopage">Todo-list</a>
+    <a class="active" href="requestpage">Request</a>
+    <a href="Results">Results</a>
+  </div>
 
 </body>
+
 </html>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="/static/request.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/static/request.js"></script>
 </head>
 
-<div>
-    <input id="new-request-KeyPhrase" type="text" class="login-field" value="" placeholder="KeyPhrase" name="req_email">
+<div class="container">
+  <div class="col-md-2"></div>
+
+  <div class="col-md-8">
+    <div class="col-md-offset-2 col-md-10">
+
+      <h3>About</h3>
+
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" ario-controls="collapseOne">
+                What is KinderMiner?
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" role="tabpanel" id="collapseOne" aria-labelledby="headingOne">
+            <div class="panel-body">
+              KinderMiner is a simple text mining method for ranking a set of target terms by association with a key phrase. For example,
+              KinderMiner can be used to rank transcription factors (the target terms) by their association with embryonic
+              stem cells (the key phrase), in order to find what transcription factors are important to the embryonic stem
+              cell state.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" ario-controls="collapseTwo">
+                How does KinderMiner work?
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" role="tabpanel" id="collapseTwo" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              KinerMiner counts the number of articles (available on Europe PubMed Central) in which each term occurs with the key phrase,
+              in which each term occurs without the key phrase, and in which the key phrase occurs without the terms. It
+              uses these counts to perform a simple statistical calculation to filter and rank the terms by their co-occurrence
+              with the key phrase. In this way, co-occurrence is assumed to represent association between any one term and
+              the key phrase.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" ario-controls="collapseThree">
+                How do I use this KinderMiner tool?
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" role="tabpanel" id="collapseThree" aria-labelledby="headingThree">
+            <div class="panel-body">
+              <ol>
+                <li>
+                  Enter your
+                  <b>Email</b> address. This is where your results will be sent when KinderMiner completes your request.
+                  <i>Note: A query may take several hours to complete.</i>
+                </li>
+                <li>
+                  Enter a
+                  <b>Key Phrase</b> for the topic you want to rank on. This is the general application you're interested in.
+                  For example, if you want to find transcription factors associated with embryonic stem cells, 'embryonic
+                  stem cell' (without quotes) would be your Key Phrase.
+                </li>
+                <li>
+                  Enter a list of
+                  <b>Target Terms</b> (one per line) to rank by their association with the Key Phrase above. For example, you
+                  might enter a complete list of transcription factors to be ranked by association with 'embryonic stem cell'
+                  or another cell type.
+                  <i>Note: We recommend using one of our quick fill options below the box.</i>
+                </li>
+                <li>
+                  <i>(optional)</i> Enter a
+                  <b>Censor Year</b> if you would like KinderMiner to only count articles published through a particular year.
+                  <i>Note: We recommend leaving it at the current year by default.</i>
+                </li>
+                <li>
+                  <i>(optional)</i> Enter an
+                  <b>FET Cutoff</b> to specify a different Fisher Exact Test p-value to filter target terms in the results.
+                  <i>Note: We recommend leaving it at the default of 1e-5. You may wish to make this smaller if you have too
+                    many terms in your final results, or larger if you have too few.</i>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" ario-controls="collapseFour">
+                How do I cite KinderMiner?
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" role="tabpanel" id="collapseFour" aria-labelledby="headingFour">
+            <div class="panel-body">
+              Kuusisto F, Steill J, Kuang Z, Thomson J, Page D, Stewart R. A Simple Text Mining Approach for Ranking Pairwise Associations
+              in Biomedical Applications. In Proceedings of the AMIA Joint Summits on Translational Science. 2017.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <div class="col-md-2"></div>
+
+      <div class="col-md-8">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="keyphrase" class="col-md-2 control-label">Key Phrase</label>
+            <div class="col-md-10">
+              <!-- <input type="text" class="form-control" id="keyphrase" placeholder="Key Phrase"> -->
+              <input id="new-request-KeyPhrase" type="text" class="form-control" value="" placeholder="KeyPhrase" name="req_email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="targetterms" class="col-md-2 control-label">Target Terms</label>
+            <div class="col-md-10">
+              <textarea id="new-request-TargetTerms" class="form-control" rows="5" id="targetterms" placeholder="Target Terms (one per line)"></textarea>
+            </div>
+            <div class="col-md-offset-2 col-md-10">
+              Quick Fill:
+              <a class="btn btn-default btn-xs" id="fillgenes" role="button">All Genes</a>
+              <a class="btn btn-default btn-xs" id="filltfs" role="button">Transcription Factors</a>
+              <a class="btn btn-default btn-xs" id="fillligands" role="button">Ligands</a>
+              <a class="btn btn-default btn-xs" id="fillmirnas" role="button">microRNA</a>
+              <a class="btn btn-default btn-xs" id="filldrugs" role="button">Drugs and Devices</a>
+            </div>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="new-request-sepKP">
+              <label class="form-check-label" for="new-request-sepKP">
+                Seperate Key Phrase
+              </label>
+            </div>
+          <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+              <button id="add-request-btn" class="btn btn-primary btn-large btn-block" onclick="addRequest()">Submit Request</button>
+              <span id="submitresponse" style="padding-left: 10px;"></span>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+
+
+  <!-- <div>
     <input id="new-request-TargetTerms" type="text" class="login-field" value="" placeholder="TargetTerms" name="req_name">
     <input id="new-request-sepKP" type="text" class="login-field" value="" placeholder="sepKP" name="req_desc">
-    <button id="add-request-btn" class="btn btn-primary btn-large btn-block" onclick="addRequest()">Submit Request</button>
-</div>
+  </div> -->
