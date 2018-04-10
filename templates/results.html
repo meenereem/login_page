@@ -50,9 +50,9 @@ body {
     <ul>
             {% for thing in request_information %}
             <li>
-                <h><b>email:</b> {{thing.email}}&nbsp;</h>
-                <h><b>name:</b> {{thing.name}}&nbsp;</h>
-                <h><b>description:</b> {{thing.description}}&nbsp;</h>
+                <h><b>KeyPhrase:</b> {{thing.KeyPhrase}}&nbsp;</h>
+                <h><b>TargetTerms:</b> {{thing.TargetTerms}}&nbsp;</h>
+                <h><b>sepKP:</b> {{thing.sepKP}}&nbsp;</h>
                 <h><b>time:</b> {{thing.time}}</h>
             </li>
             {% endfor %}
