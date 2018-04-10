@@ -43,9 +43,9 @@
 # CREATE TABLE requests
 # (
 #     id INT unsigned NOT NULL AUTO_INCREMENT,
-#     email VARCHAR(200) NOT NULL,
-#     name VARCHAR(200) NOT NULL,
-#     description VARCHAR(200) NOT NULL,
+#     KeyPhrase VARCHAR(200) NOT NULL,
+#     TargetTerms VARCHAR(200) NOT NULL,
+#     sepKP VARCHAR(200) NOT NULL,
 #     time VARCHAR(200) NOT NULL,
 #     PRIMARY KEY (id)   
 # );

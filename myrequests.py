@@ -1,17 +1,18 @@
 from time import gmtime, strftime
 class Request:
-    def __init__(self, request_id, email, name, description, time):
+    def __init__(self, request_id, KeyPhrase, TargetTerms, sepKP, time):
         self.request_id = request_id
-        self.email = email
-        self.name = name
-        self.description = description
+        self.KeyPhrase = KeyPhrase
+        self.TargetTerms = TargetTerms
+        self.sepKP = sepKP
         self.time = time
 
-def submit_request(db, email, name, description):
-    q_str = "INSERT INTO requests ({1}, {2}, {3}, {4}) values (%s, %s, %s, %s)".format(TABLE_NAME, FIELD_EMAIL, FIELD_NAME, FIELD_DESCRIPTION, FIELD_TIME)
+def submit_request(db, KeyPhrase, TargetTerms, sepKP):
+    print(KeyPhrase)
+    q_str = "INSERT INTO requests ({1}, {2}, {3}, {4}) values (%s, %s, %s, %s)".format(TABLE_NAME, FIELD_KP, FIELD_TargetTerms, FIELD_SEPKP, FIELD_TIME)
     c = db.cursor()
     t = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-    c.execute(q_str, [email, name, description, t])
+    c.execute(q_str, [KeyPhrase, TargetTerms, sepKP, t])
     db.commit()
 
 def select_all_requests(db):
@@ -22,7 +23,7 @@ def select_all_requests(db):
     return reqs
 
 TABLE_NAME = 'requests'
-FIELD_EMAIL = 'email'
-FIELD_NAME = 'name'
-FIELD_DESCRIPTION = 'description'
+FIELD_KP = 'KeyPhrase'
+FIELD_TargetTerms = 'TargetTerms'
+FIELD_SEPKP = 'sepKP'
 FIELD_TIME = 'time'

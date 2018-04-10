@@ -81,7 +81,7 @@ def todo():
 @app.route('/todo_add', methods=['POST'])
 def add_task():
     user = get_logged_in_user()
-    if request.form['task'] != None:
+    if request.form['task']:
         add_todo_task(g.db, user.email, request.form['task'])
     return jsonify({"success": True})
 
@@ -101,9 +101,12 @@ def req():
 
 @app.route('/request_add', methods=['POST'])
 def add_request():
-    if request.form['email'] != None and request.form['name'] != None and request.form['description'] != None:
+    print(request)
+    print(request.form)
+    print(request.form['KeyPhrase'])
+    if request.form['KeyPhrase'] and request.form['TargetTerms'] and request.form['sepKP']:
         print(request)
-        submit_request(g.db, request.form['email'], request.form['name'], request.form['description'])
+        submit_request(g.db, request.form['KeyPhrase'], request.form['TargetTerms'], request.form['sepKP'])
     return jsonify({"success": True})
 
 @app.route('/Results', methods=['POST', 'GET'])

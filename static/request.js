@@ -1,14 +1,14 @@
 function addRequest() {
-    var newEmail = $("#new-request-email").val();
-    var newName = $("#new-request-name").val();
-    var newDescription = $("#new-request-description").val();
+    var newKeyPhrase = $("#new-request-KeyPhrase").val();
+    var newTargetTerms = $("#new-request-TargetTerms").val();
+    var newsepKP = $("#new-request-sepKP").val();
     $.post(
         "/request_add",
         {
             type: "add",
-            email: newEmail,
-            name: newName,
-            description: newDescription
+            KeyPhrase: newKeyPhrase,
+            TargetTerms: newTargetTerms,
+            sepKP: newsepKP
         },
         function (data) {
             if (data.success == true) {

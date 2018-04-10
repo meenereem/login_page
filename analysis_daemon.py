@@ -32,7 +32,7 @@ while True:
     all_reqs = select_all_requests(db)
     if all_reqs:
         for info in all_reqs:
-            mylist = {"email": info.email, "name": info.name, "description": info.description, "time": info.time, "complete_time": strftime("%Y-%m-%d %H:%M:%S", gmtime())}
+            mylist = {"Key Phrase": info.KeyPhrase, "Target Terms": info.TargetTerms, "seperate Key Phrases": info.sepKP, "time": info.time, "complete_time": strftime("%Y-%m-%d %H:%M:%S", gmtime())}
             print(mylist["time"])
             done = "Done"
             q_str = "INSERT INTO results ({0}, {1}, {2}) values (%s, %s, %s)".format(FIELD_ID, FIELD_PARAMS, FIELD_RESULT)
