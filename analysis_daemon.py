@@ -32,7 +32,7 @@ while True:
     all_reqs = select_all_requests(db)
     if all_reqs:
         for info in all_reqs:
-            mylist = {"Key Phrase": info.KeyPhrase, "Target Terms": info.TargetTerms, "seperate Key Phrases": info.sepKP, "time": info.time, "complete_time": strftime("%Y-%m-%d %H:%M:%S", gmtime())}
+            mylist = {"Key Phrase": info.KeyPhrase, "Target Terms": info.TargetTerms.replace('\n', ' ')[0: 100] + ("..."), "seperate Key Phrases": info.sepKP, "time": info.time, "complete_time": strftime("%Y-%m-%d %H:%M:%S", gmtime())}
             print(mylist["time"])
             done = "Done"
             q_str = "INSERT INTO results ({0}, {1}, {2}) values (%s, %s, %s)".format(FIELD_ID, FIELD_PARAMS, FIELD_RESULT)
@@ -40,12 +40,12 @@ while True:
             del_row = "delete from requests where id = %s"
             cursor.execute(del_row, [info.request_id])
             db.commit()
-            postmark = PostmarkClient(server_token='a27b1880-5284-4389-b274-b74d22b2b22c')
-            postmark.emails.send(
-            From='dng4@wisc.edu',
-            To='dng4@wisc.edu',
-            Subject='Morgridge Insitute',
-            HtmlBody='<b>your request has been processed</b>')
+            # postmark = PostmarkClient(server_token='a27b1880-5284-4389-b274-b74d22b2b22c')
+            # postmark.emails.send(
+            # From='dng4@wisc.edu',
+            # To='dng4@wisc.edu',
+            # Subject='Morgridge Insitute',
+            # HtmlBody='<b>your request has been processed</b>')
     else:
         print('no requests')
     time.sleep(30)
