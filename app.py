@@ -107,7 +107,7 @@ def req():
 def add_request():
     print(request)
     print(request.form)
-    print(request.form['KeyPhrase'])
+    print(request.form['TargetTerms'])
     if request.form['KeyPhrase'] and request.form['TargetTerms'] and request.form['sepKP']:
         print(request)
         submit_request(g.db, request.form['KeyPhrase'], request.form['TargetTerms'], request.form['sepKP'])
