@@ -28,7 +28,7 @@ function fillTargetTermsWithStatic(filename) {
     $.get(
         "/../static/" + filename,
         function(data) {
-            $("#targetterms").val(data);
+            $("#new-request-TargetTerms").val(data);
         }
     );
 }
