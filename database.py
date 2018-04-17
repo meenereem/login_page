@@ -44,16 +44,17 @@
 # (
 #     id INT unsigned NOT NULL AUTO_INCREMENT,
 #     KeyPhrase VARCHAR(200) NOT NULL,
-#     TargetTerms VARCHAR(200) NOT NULL,
+#     TargetTerms LONGTEXT NOT NULL,
 #     sepKP VARCHAR(200) NOT NULL,
 #     time VARCHAR(200) NOT NULL,
+#     in_progress VARCHAR(200) NOT NULL,
 #     PRIMARY KEY (id)   
 # );
 
 # CREATE TABLE results
 # (
 #     result_id VARCHAR(200) NOT NULL,
-#     params VARCHAR(200) NOT NULL,
+#     params LONGTEXT NOT NULL,
 #     result VARCHAR(200) NOT NULL
 # );
 

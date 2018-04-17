@@ -30,16 +30,18 @@ while True:
     db = MySQLdb.connect("localhost","root","pass","morgdb")
     cursor = db.cursor()
     all_reqs = select_all_requests(db)
-    if all_reqs:
+    if all_reqs :
         for info in all_reqs:
-            mylist = {"Key Phrase": info.KeyPhrase, "Target Terms": info.TargetTerms.replace('\n', ' ')[0: 100] + ("..."), "seperate Key Phrases": info.sepKP, "time": info.time, "complete_time": strftime("%Y-%m-%d %H:%M:%S", gmtime())}
-            print(mylist["time"])
-            done = "Done"
-            q_str = "INSERT INTO results ({0}, {1}, {2}) values (%s, %s, %s)".format(FIELD_ID, FIELD_PARAMS, FIELD_RESULT)
-            cursor.execute(q_str, [info.request_id, json.dumps(mylist), done])
-            del_row = "delete from requests where id = %s"
-            cursor.execute(del_row, [info.request_id])
-            db.commit()
+            if info.in_progress == "False":
+                progress = "UPDATE requests SET in_progress='True' WHERE id = %s"
+                cursor.execute(progress, [info.request_id])
+                mylist = {"Key Phrase": info.KeyPhrase, "Target Terms": info.TargetTerms.replace('\n', ' ')[0: 100] + ("..."), "seperate Key Phrases": info.sepKP, "time": info.time, "complete_time": strftime("%Y-%m-%d %H:%M:%S", gmtime())}
+                done = "Done"
+                q_str = "INSERT INTO results ({0}, {1}, {2}) values (%s, %s, %s)".format(FIELD_ID, FIELD_PARAMS, FIELD_RESULT)
+                cursor.execute(q_str, [info.request_id, json.dumps(mylist), done])
+                del_row = "delete from requests where id = %s"
+                cursor.execute(del_row, [info.request_id])
+                db.commit()
             # postmark = PostmarkClient(server_token='a27b1880-5284-4389-b274-b74d22b2b22c')
             # postmark.emails.send(
             # From='dng4@wisc.edu',

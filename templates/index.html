@@ -48,7 +48,8 @@
 
 </html>
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+crossorigin="anonymous">
 <div>
     <center>
         <p> hi {{email}}, you've successfully logged in!</p>
@@ -62,27 +63,22 @@
                     <input type="message" value="" placeholder="message" name="message">
                     <label class="login-field-icon fui-lock" for="login-pass"></label>
                 </div>
-                <input type="submit" value="Send" class="btn btn-primary btn-large btn-block">
-
+                <input type="submit" value="Send" class="btn btn-primary">
             </div>
         </form>
 
         <form action="/logout" method="POST">
-            <input type="submit" value="Logout" class="btn btn-primary btn-large btn-block">
+            <input type="submit" value="Logout" class="btn btn-danger">
         </form>
     </center>
 </div>
 
 
 
-<!-- <form action="/secondpage" method="POST">
-    <input type="submit" value="explore" class="btn btn-primary btn-large btn-block">
-</form> -->
-
-<!-- <form action="/todopage" method="GET">
-    <input type="submit" value="todolist" class="btn btn-primary btn-large btn-block">
-</form> -->
-
-<!-- <form action="/requestpage" method="GET">
-    <input type="submit" value="request" class="btn btn-primary btn-large btn-block">
-</form> -->
+  <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
