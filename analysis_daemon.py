@@ -21,7 +21,7 @@ class Analyze:
 def process_request(info):
     db = MySQLdb.connect("localhost","root","pass","morgdb")
     cursor = db.cursor()
-    mylist = {"Key Phrase": info.KeyPhrase, "Target Terms": info.TargetTerms.replace('\n', ' ')[0: 100] + ("..."), "seperate Key Phrases": info.sepKP, "time": info.time, "complete_time": strftime("%Y-%m-%d %H:%M:%S", gmtime())}
+    mylist = {"Key Phrase": info.KeyPhrase, "Target Terms": info.TargetTerms.replace('\n', ' ')[0: 100] + ("...") if (len(info.TargetTerms) > 200) else info.TargetTerms.replace('\n', ' ')[0: 100], "seperate Key Phrases": info.sepKP, "time": info.time, "complete_time": strftime("%Y-%m-%d %H:%M:%S", gmtime())}
     done = "Done"
     q_str = "INSERT INTO results ({0}, {1}, {2}) values (%s, %s, %s)".format(FIELD_ID, FIELD_PARAMS, FIELD_RESULT)
     cursor.execute(q_str, [info.request_id, json.dumps(mylist), done])
