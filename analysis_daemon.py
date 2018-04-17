@@ -49,9 +49,7 @@ while True:
                 progress = "UPDATE requests SET in_progress='True' WHERE id = %s"
                 cursor.execute(progress, [info.request_id])
                 db.commit()
-                print("1")
                 pool.apply_async(process_request, (info,))
-                print("2")
             # postmark = PostmarkClient(server_token='a27b1880-5284-4389-b274-b74d22b2b22c')
             # postmark.emails.send(
             # From='dng4@wisc.edu',
